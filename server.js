@@ -84,6 +84,20 @@ app.post('/api/subscribe', (req, res) => {
   res.status(201).json({ message: 'Subscription successful!' });
 });
 
+//show json
+
+// New route to serve the JSON file
+app.get('/api/subscriptions', async (req, res) => {
+  try {
+    const filePath = path.join(__dirname, 'subscriptions.json');
+    const data = await fs.readFile(filePath, 'utf8');
+    res.status(200).json(JSON.parse(data)); // Send JSON content
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Failed to read subscriptions' });
+  }
+});
+
 // Start the server
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
