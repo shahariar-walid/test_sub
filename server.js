@@ -11,7 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 // Path to the JSON file
-const subscriptionsFile = path.join(__dirname, 'subscriptions.json');
+const subscriptionsFile = path.resolve(__dirname, 'subscriptions.json');
+
 
 // Ensure the JSON file exists
 if (!fs.existsSync(subscriptionsFile)) {
