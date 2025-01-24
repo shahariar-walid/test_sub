@@ -90,7 +90,7 @@ app.post('/api/subscribe', (req, res) => {
 app.get('/api/subscriptions', async (req, res) => {
   try {
     const filePath = path.join(__dirname, 'subscriptions.json');
-    const data = await fs.readFile(filePath, 'utf8');
+    const data = await fs.readFileSync(filePath, 'utf8');
     res.status(200).json(JSON.parse(data)); // Send JSON content
   } catch (err) {
     console.error(err);
