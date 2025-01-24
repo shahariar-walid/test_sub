@@ -4,7 +4,7 @@ const fs = require('fs');
 const path = require('path');
 
 const app = express();
-const PORT = 3000;
+const PORT = process.env.PORT || 3000; 
 
 // Middleware
 app.use(cors());
@@ -40,5 +40,5 @@ app.post('/api/subscribe', (req, res) => {
 
 // Start the server
 app.listen(PORT, () => {
-  console.log(`Backend is running at http://localhost:${PORT}`);
+  console.log(`Backend is running on port ${PORT}`);
 });
